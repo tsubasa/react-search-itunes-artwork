@@ -1,0 +1,56 @@
+{
+  "defaultSeverity": "warning",
+  "extends": [
+    "tslint:recommended",
+    "tslint-react",
+    "tslint-config-prettier"
+  ],
+  "linterOptions": {
+    "exclude": [
+      "config/**/*.js",
+      "node_modules/**/*.ts",
+      "coverage/lcov-report/*.js"
+    ]
+  },
+  "rulesDirectory": ["tslint-plugin-prettier"],
+  "rules": {
+    "prettier": [
+      true,
+      {
+        "bracketSpacing": true,
+        "printWidth": 200,
+        "singleQuote": true,
+        "tabWidth": 2,
+        "trailingComma": "none",
+        "useTabs": false
+      }
+    ],
+    "no-console": {
+      "options": [
+        "assert",
+        "count",
+        "debug",
+        "dir",
+        "dirxml",
+        // "error",
+        "group",
+        "groupCollapsed",
+        "groupEnd",
+        "info",
+        "log",
+        "markTimeline",
+        "memory",
+        "profile",
+        "profileEnd",
+        "table",
+        "time",
+        "timeEnd",
+        "timeStamp",
+        "trace"
+        // "warn"
+      ]
+    },
+    "ordered-imports": false,
+    "object-literal-sort-keys": false
+  }
+}
