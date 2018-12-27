@@ -1,13 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-const Hello: React.SFC<{ compiler: string; framework: string }> = props => {
-  return (
-    <div>
-      <div>{props.compiler}</div>
-      <div>{props.framework}</div>
-    </div>
-  );
-};
+import App from './components/App';
 
-ReactDOM.render(<Hello compiler="TypeScript" framework="React" />, document.querySelector('.root'));
+ReactDOM.render(<App />, document.querySelector('.root'));
