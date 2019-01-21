@@ -18,7 +18,7 @@
       true,
       {
         "bracketSpacing": true,
-        "printWidth": 200,
+        "printWidth": 130,
         "singleQuote": true,
         "tabWidth": 2,
         "trailingComma": "none",
@@ -27,27 +27,9 @@
     ],
     "no-console": {
       "options": [
-        "assert",
-        "count",
         "debug",
-        "dir",
-        "dirxml",
-        // "error",
-        "group",
-        "groupCollapsed",
-        "groupEnd",
         "info",
-        "log",
-        "markTimeline",
-        "memory",
-        "profile",
-        "profileEnd",
-        "table",
-        "time",
-        "timeEnd",
-        "timeStamp",
-        "trace"
-        // "warn"
+        "log"
       ]
     },
     "ordered-imports": false,

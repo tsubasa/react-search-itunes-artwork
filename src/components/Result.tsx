@@ -124,5 +124,6 @@ export default class Result extends React.Component<IProps, IState> {
     window.open(this.changeImageSize(url, this.state.size, this.state.quality), '_blank');
   };
 
-  private changeImageSize = (url: string, size: React.ReactText, quality: React.ReactText) => url.replace(/^(https?.+\/source\/)(.+)(\.\w+)$/, `$1${size}x0w-${quality}$3`);
+  private changeImageSize = (url: string, size: React.ReactText, quality: React.ReactText) =>
+    url.replace(/^(https?.+\/source\/)(.+)(\.\w+)$/, `$1${size}x0w-${quality}$3`);
 }
