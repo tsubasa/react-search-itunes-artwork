@@ -23,6 +23,10 @@ export default class Search extends React.Component<IProps> {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  private handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
+    this.props.handleChange(e);
+  }
+
   public render() {
     return (
       <OptionWrapper>
@@ -47,9 +51,5 @@ export default class Search extends React.Component<IProps> {
         </Label>
       </OptionWrapper>
     );
-  }
-
-  private handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
-    this.props.handleChange(e);
   }
 }

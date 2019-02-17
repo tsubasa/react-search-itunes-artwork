@@ -82,6 +82,20 @@ export default class Result extends React.Component<IProps, IState> {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  private handleClick = (url: string) => (e: React.MouseEvent<HTMLElement>) => {
+    window.open(this.changeImageSize(url, this.state.size, this.state.quality), '_blank');
+  };
+
+  private changeImageSize = (url: string, size: React.ReactText, quality: React.ReactText) =>
+    url.replace(/^(https?.+\/source\/)(.+)(\.\w+)$/, `$1${size}x0w-${quality}$3`);
+
+  private handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
+    this.setState({
+      ...this.state,
+      [e.target.name]: e.target.value
+    });
+  }
+
   public render() {
     const { isFeching, data } = this.props;
 
@@ -112,18 +126,4 @@ export default class Result extends React.Component<IProps, IState> {
       </React.Fragment>
     );
   }
-
-  private handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
-    this.setState({
-      ...this.state,
-      [e.target.name]: e.target.value
-    });
-  }
-
-  private handleClick = (url: string) => (e: React.MouseEvent<HTMLElement>) => {
-    window.open(this.changeImageSize(url, this.state.size, this.state.quality), '_blank');
-  };
-
-  private changeImageSize = (url: string, size: React.ReactText, quality: React.ReactText) =>
-    url.replace(/^(https?.+\/source\/)(.+)(\.\w+)$/, `$1${size}x0w-${quality}$3`);
 }

@@ -23,9 +23,10 @@ const Input = styled.input`
 // helpers
 const debounce = (fn: any, delay: number = 1000) => {
   let timer: any;
+  /* eslint-disable-next-line func-names, no-unused-vars */
   return function(this: any) {
     const context = this;
-    const args = arguments;
+    const args = arguments; /* eslint-disable-line prefer-rest-params */
     clearTimeout(timer);
     timer = setTimeout(() => {
       fn.apply(context, args);
@@ -49,14 +50,6 @@ export default class Search extends React.Component<IProps, IState> {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  public render() {
-    return (
-      <InputWrapper>
-        <Input defaultValue="" name="term" onChange={this.handleChange} placeholder="アルバム名を入力" />
-      </InputWrapper>
-    );
-  }
-
   private fetchData() {
     const { fetchData } = this.props;
     fetchData(this.state);
@@ -71,6 +64,14 @@ export default class Search extends React.Component<IProps, IState> {
       () => {
         this.fetchData();
       }
+    );
+  }
+
+  public render() {
+    return (
+      <InputWrapper>
+        <Input defaultValue="" name="term" onChange={this.handleChange} placeholder="アルバム名を入力" />
+      </InputWrapper>
     );
   }
 }
