@@ -8,14 +8,24 @@ interface IState {
   isFeching: boolean;
   data: {
     resultCount?: number;
-    results?: [{}?];
+    results?: {}[];
   };
 }
 
 export interface ISearchParams {
   term: string;
   country: 'en' | 'jp';
-  media?: 'movie' | 'podcast' | 'music' | 'musicVideo' | 'audiobook' | 'shortFilm' | 'tvShow' | 'software' | 'ebook' | 'all';
+  media?:
+    | 'movie'
+    | 'podcast'
+    | 'music'
+    | 'musicVideo'
+    | 'audiobook'
+    | 'shortFilm'
+    | 'tvShow'
+    | 'software'
+    | 'ebook'
+    | 'all';
   entity?: 'musicArtist' | 'musicTrack' | 'album' | 'musicVideo' | 'mix' | 'song';
 }
 
@@ -30,18 +40,6 @@ export default class App extends React.Component<{}, IState> {
     };
 
     this.fetchData = this.fetchData.bind(this);
-  }
-
-  public render() {
-    const { isFeching, data } = this.state;
-
-    return (
-      <React.Fragment>
-        <h1>iTunes アルバムアートワーク検索ツール</h1>
-        <Search fetchData={this.fetchData} />
-        <Result isFeching={isFeching} data={data} />
-      </React.Fragment>
-    );
   }
 
   private fetchData(params: ISearchParams) {
@@ -65,7 +63,19 @@ export default class App extends React.Component<{}, IState> {
             data: response
           });
         })
-        .catch(error => this.setState({ isFeching: false, data: {} }));
+        .catch(() => this.setState({ isFeching: false, data: {} }));
     }
+  }
+
+  public render() {
+    const { isFeching, data } = this.state;
+
+    return (
+      <React.Fragment>
+        <h1>iTunes アルバムアートワーク検索ツール</h1>
+        <Search fetchData={this.fetchData} />
+        <Result isFeching={isFeching} data={data} />
+      </React.Fragment>
+    );
   }
 }
