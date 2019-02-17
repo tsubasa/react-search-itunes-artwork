@@ -12,9 +12,8 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true,
+      jsx: true
     },
-    ecmaVersion: 2018,
     sourceType: 'module',
     project: './tsconfig.json',
     useJSXTextNode: true,
@@ -37,18 +36,23 @@ module.exports = {
         parser: 'typescript'
       }
     ],
+    'import/no-extraneous-dependencies': 'off',
     'no-console': [
       'warn',
       {
         allow: ['error', 'warn']
       }
     ],
+    'react/no-array-index-key': 'off',
     'react/jsx-filename-extension': [
       'error',
       {
         extensions: ['.js', '.jsx', '.ts', '.tsx']
       }
-    ]
+    ],
+    'react/prop-types': 'off',
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'error'
   },
   settings: {
     'import/resolver': {
