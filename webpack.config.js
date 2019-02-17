@@ -1,5 +1,3 @@
-'use strict';
-
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -14,10 +12,7 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: [
-          { loader: 'ts-loader' },
-          { loader: 'tslint-loader' }
-        ]
+        use: [{ loader: 'ts-loader' }, { loader: 'eslint-loader' }]
       }
     ]
   },
@@ -31,4 +26,4 @@ module.exports = {
       filename: './index.html'
     })
   ]
-}
+};
