@@ -1,3 +1,5 @@
+'use strict';
+
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -5,7 +7,8 @@ module.exports = {
   entry: './src/index.tsx',
   output: {
     path: `${__dirname}/build`,
-    filename: 'app.[hash:8].min.js'
+    filename: 'app.[hash:8].min.js',
+    publicPath: '/'
   },
   module: {
     rules: [
