@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
   env: {
     browser: true,
@@ -5,6 +7,7 @@ module.exports = {
   },
   extends: [
     'airbnb',
+    'plugin:prettier/recommended'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -17,9 +20,44 @@ module.exports = {
     useJSXTextNode: true,
   },
   plugins: [
-    "@typescript-eslint",
+    '@typescript-eslint',
     'react',
   ],
   rules: {
+    'prettier/prettier': [
+      'warn',
+      {
+        bracketSpacing: true,
+        printWidth: 120,
+        singleQuote: true,
+        tabWidth: 2,
+        trailingComma: 'none',
+        useTabs: false,
+        jsxBracketSameLine: false,
+        parser: 'typescript'
+      }
+    ],
+    'no-console': [
+      'warn',
+      {
+        allow: ['error', 'warn']
+      }
+    ],
+    'react/jsx-filename-extension': [
+      'error',
+      {
+        extensions: ['.js', '.jsx', '.ts', '.tsx']
+      }
+    ]
   },
+  settings: {
+    'import/resolver': {
+      webpack: {
+        config: './webpack.dev.js'
+      }
+    },
+    node: {
+      tryExtensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.node'],
+    },
+  }
 };
