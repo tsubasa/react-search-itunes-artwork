@@ -56,15 +56,11 @@ export default class Search extends React.Component<IProps, IState> {
   }
 
   private handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    this.setState(
-      {
-        ...this.state,
-        [e.target.name]: e.target.value
-      },
-      () => {
+    if (Object.keys(this.state).includes(e.target.name)) {
+      this.setState({ [e.target.name]: e.target.value } as Pick<IState, keyof IState>, () => {
         this.fetchData();
-      }
-    );
+      });
+    }
   }
 
   public render() {

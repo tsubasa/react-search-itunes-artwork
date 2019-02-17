@@ -82,19 +82,19 @@ export default class Result extends React.Component<IProps, IState> {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  private handleClick = (url: string) => (e: React.MouseEvent<HTMLElement>) => {
-    window.open(this.changeImageSize(url, this.state.size, this.state.quality), '_blank');
+  private handleClick = (url: string) => () => {
+    const { size, quality } = this.state;
+    window.open(this.changeImageSize(url, size, quality), '_blank');
   };
 
   private changeImageSize = (url: string, size: React.ReactText, quality: React.ReactText) =>
     url.replace(/^(https?.+\/source\/)(.+)(\.\w+)$/, `$1${size}x0w-${quality}$3`);
 
-  private handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
-    this.setState({
-      ...this.state,
-      [e.target.name]: e.target.value
-    });
-  }
+  private handleChange = (name: 'size' | 'quality') => (e: React.ChangeEvent<HTMLSelectElement>) => {
+    if (Object.keys(this.state).includes(name)) {
+      this.setState({ [name]: e.target.value } as Pick<IState, keyof IState>);
+    }
+  };
 
   public render() {
     const { isFeching, data } = this.props;
@@ -107,7 +107,7 @@ export default class Result extends React.Component<IProps, IState> {
             <h1>Searching...</h1>
           ) : (
             <React.Fragment>
-              {data.hasOwnProperty('results') &&
+              {'results' in data &&
                 data.results &&
                 data.results.map((item: any, index: number) => {
                   const { collectionName, artworkUrl100 } = item;

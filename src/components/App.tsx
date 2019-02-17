@@ -8,7 +8,7 @@ interface IState {
   isFeching: boolean;
   data: {
     resultCount?: number;
-    results?: [{}?];
+    results?: {}[];
   };
 }
 
