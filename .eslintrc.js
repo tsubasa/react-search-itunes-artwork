@@ -3,10 +3,11 @@
 module.exports = {
   env: {
     browser: true,
-    es6: true,
+    es6: true
   },
   extends: [
-    'airbnb',
+    'airbnb-base',
+    'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended'
   ],
   parser: '@typescript-eslint/parser',
@@ -16,11 +17,11 @@ module.exports = {
     },
     sourceType: 'module',
     project: './tsconfig.json',
-    useJSXTextNode: true,
+    useJSXTextNode: true
   },
   plugins: [
     '@typescript-eslint',
-    'react',
+    'react'
   ],
   rules: {
     'prettier/prettier': [
@@ -36,23 +37,12 @@ module.exports = {
         parser: 'typescript'
       }
     ],
-    'import/no-extraneous-dependencies': 'off',
-    'no-console': [
-      'warn',
-      {
-        allow: ['error', 'warn']
-      }
-    ],
-    'react/no-array-index-key': 'off',
-    'react/jsx-filename-extension': [
-      'error',
-      {
-        extensions: ['.js', '.jsx', '.ts', '.tsx']
-      }
-    ],
-    'react/prop-types': 'off',
-    'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': 'error'
+    'no-console': ['warn', { allow: ['error', 'warn'] }],
+    '@typescript-eslint/indent': 'off',
+    '@typescript-eslint/interface-name-prefix': ['warn', 'always'],
+    '@typescript-eslint/no-object-literal-type-assertion': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/no-explicit-any': 'off'
   },
   settings: {
     'import/resolver': {
@@ -61,7 +51,7 @@ module.exports = {
       }
     },
     node: {
-      tryExtensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.node'],
-    },
+      tryExtensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.node']
+    }
   }
 };
