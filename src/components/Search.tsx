@@ -21,7 +21,7 @@ const Input = styled.input`
 `;
 
 // helpers
-const debounce = (fn: any, delay: number = 1000) => {
+const debounce = (fn: any, delay: number = 1000): (() => void) => {
   let timer: any;
   /* eslint-disable-next-line func-names, no-unused-vars */
   return function(this: any) {
@@ -36,7 +36,7 @@ const debounce = (fn: any, delay: number = 1000) => {
 
 // components
 export default class Search extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
+  public constructor(props: IProps) {
     super(props);
 
     this.state = {
@@ -50,12 +50,12 @@ export default class Search extends React.Component<IProps, IState> {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  private fetchData() {
+  private fetchData(): void {
     const { fetchData } = this.props;
     fetchData(this.state);
   }
 
-  private handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+  private handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
     if (Object.keys(this.state).includes(e.target.name)) {
       this.setState({ [e.target.name]: e.target.value } as Pick<IState, keyof IState>, () => {
         this.fetchData();
@@ -63,7 +63,7 @@ export default class Search extends React.Component<IProps, IState> {
     }
   }
 
-  public render() {
+  public render(): React.ReactElement {
     return (
       <InputWrapper>
         <Input defaultValue="" name="term" onChange={this.handleChange} placeholder="アルバム名を入力" />

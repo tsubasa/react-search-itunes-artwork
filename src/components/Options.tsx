@@ -16,7 +16,7 @@ const Label = styled.label`
 `;
 
 // components
-const Search: React.FC<IProps> = props => {
+const Search: React.FC<IProps> = (props): React.ReactElement => {
   const { handleChange } = props;
 
   return (

@@ -31,7 +31,7 @@ export interface ISearchParams {
 
 // components
 export default class App extends React.Component<{}, IState> {
-  constructor(props: {}) {
+  public constructor(props: {}) {
     super(props);
 
     this.state = {
@@ -42,7 +42,7 @@ export default class App extends React.Component<{}, IState> {
     this.fetchData = this.fetchData.bind(this);
   }
 
-  private fetchData(params: ISearchParams) {
+  private fetchData(params: ISearchParams): void {
     if (Object.keys(params).length) {
       this.setState({
         isFeching: true
@@ -67,7 +67,7 @@ export default class App extends React.Component<{}, IState> {
     }
   }
 
-  public render() {
+  public render(): React.ReactElement {
     const { isFeching, data } = this.state;
 
     return (

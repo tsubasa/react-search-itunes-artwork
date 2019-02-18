@@ -70,7 +70,7 @@ const ItemWrapper = styled.div`
 
 // components
 export default class Result extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
+  public constructor(props: IProps) {
     super(props);
 
     this.state = {
@@ -96,7 +96,7 @@ export default class Result extends React.Component<IProps, IState> {
     }
   };
 
-  public render() {
+  public render(): React.ReactElement {
     const { isFeching, data } = this.props;
 
     return (
