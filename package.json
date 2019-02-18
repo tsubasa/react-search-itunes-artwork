@@ -5,8 +5,8 @@
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js",
     "build": "run-s eslint && webpack --config webpack.prod.js",
-    "eslint": "eslint src/*",
-    "eslint:fix": "eslint src/* --fix",
+    "eslint": "eslint --ext .js,.jsx,.ts,.tsx src",
+    "eslint:fix": "eslint --ext .js,.jsx,.ts,.tsx --fix src",
     "clean": "rm -rf build"
   },
   "dependencies": {
@@ -22,6 +22,7 @@
     "clean-webpack-plugin": "^1.0.1",
     "eslint": "^5.14.0",
     "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^4.0.0",
     "eslint-import-resolver-webpack": "^0.11.0",
     "eslint-loader": "^2.1.2",
