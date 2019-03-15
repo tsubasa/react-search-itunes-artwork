@@ -7,6 +7,14 @@ const webpackConfig = require('./webpack.config.js');
 module.exports = merge(webpackConfig, {
   mode: 'development',
   devtool: 'inline-source-map',
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: [{ loader: 'ts-loader' }, { loader: 'eslint-loader' }]
+      }
+    ]
+  },
   plugins: [new webpack.NamedModulesPlugin(), new webpack.HotModuleReplacementPlugin()],
   devServer: {
     compress: true,
