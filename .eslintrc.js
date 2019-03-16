@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = {
+  root: true,
   env: {
     browser: true,
     es6: true
@@ -17,6 +18,7 @@ module.exports = {
     },
     sourceType: 'module',
     project: './tsconfig.json',
+    tsconfigRootDir: __dirname, // @see https://github.com/typescript-eslint/typescript-eslint/issues/251
     useJSXTextNode: true
   },
   plugins: [
@@ -47,11 +49,8 @@ module.exports = {
   settings: {
     'import/resolver': {
       webpack: {
-        config: './webpack.dev.js'
+        config: './webpack.config.js'
       }
-    },
-    node: {
-      tryExtensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.node']
     }
   }
 };
