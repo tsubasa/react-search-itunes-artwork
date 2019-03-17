@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires, import/no-extraneous-dependencies */
+
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
@@ -11,7 +12,15 @@ module.exports = merge(webpackConfig, {
     rules: [
       {
         test: /\.tsx?$/,
-        use: [{ loader: 'ts-loader' }, { loader: 'eslint-loader' }]
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              configFile: path.resolve(__dirname, 'tsconfig.json')
+            }
+          },
+          { loader: 'eslint-loader' }
+        ]
       }
     ]
   },

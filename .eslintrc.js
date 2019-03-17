@@ -9,6 +9,7 @@ module.exports = {
   extends: [
     'airbnb-base',
     'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
     'plugin:prettier/recommended'
   ],
   parser: '@typescript-eslint/parser',
@@ -23,6 +24,7 @@ module.exports = {
   },
   plugins: [
     '@typescript-eslint',
+    'prettier',
     'react'
   ],
   rules: {
@@ -39,18 +41,22 @@ module.exports = {
         parser: 'typescript'
       }
     ],
-    'no-console': ['warn', { allow: ['error', 'warn'] }],
     '@typescript-eslint/indent': 'off',
     '@typescript-eslint/interface-name-prefix': ['warn', 'always'],
     '@typescript-eslint/no-object-literal-type-assertion': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
-    '@typescript-eslint/no-explicit-any': 'off'
+    '@typescript-eslint/no-explicit-any': 'off',
+    'no-console': ['warn', { allow: ['error', 'warn'] }],
+    'react/prop-types': 'off'
   },
   settings: {
     'import/resolver': {
       webpack: {
         config: './webpack.config.js'
       }
+    },
+    react: {
+      version: '999.9999' // TODO: https://github.com/yannickcr/eslint-plugin-react#configuration
     }
   }
 };
