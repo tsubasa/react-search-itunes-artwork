@@ -19,7 +19,7 @@ module.exports = {
     },
     sourceType: 'module',
     project: './tsconfig.json',
-    tsconfigRootDir: __dirname, // @see https://github.com/typescript-eslint/typescript-eslint/issues/251
+    tsconfigRootDir: __dirname,
     useJSXTextNode: true
   },
   plugins: [
@@ -44,7 +44,7 @@ module.exports = {
     '@typescript-eslint/indent': 'off',
     '@typescript-eslint/interface-name-prefix': ['warn', 'always'],
     '@typescript-eslint/no-object-literal-type-assertion': 'off',
-    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'warn',
     '@typescript-eslint/no-explicit-any': 'off',
     'no-console': ['warn', { allow: ['error', 'warn'] }],
     'react/prop-types': 'off'
@@ -56,7 +56,7 @@ module.exports = {
       }
     },
     react: {
-      version: '999.9999' // TODO: https://github.com/yannickcr/eslint-plugin-react#configuration
+      version: '999.9999'
     }
   }
 };
