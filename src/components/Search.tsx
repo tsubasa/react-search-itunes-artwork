@@ -24,11 +24,11 @@ const Input = styled.input`
 const debounce = (fn: any, delay: number = 1000): (() => void) => {
   let timer: any;
   /* eslint-disable-next-line func-names, no-unused-vars */
-  return function(this: any) {
+  return function(this: any): void {
     const context = this;
     const args = arguments; /* eslint-disable-line prefer-rest-params */
     clearTimeout(timer);
-    timer = setTimeout(() => {
+    timer = setTimeout((): void => {
       fn.apply(context, args);
     }, delay);
   };
@@ -57,9 +57,12 @@ export default class Search extends React.Component<IProps, IState> {
 
   private handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
     if (Object.keys(this.state).includes(e.target.name)) {
-      this.setState({ [e.target.name]: e.target.value } as Pick<IState, keyof IState>, () => {
-        this.fetchData();
-      });
+      this.setState(
+        { [e.target.name]: e.target.value } as Pick<IState, keyof IState>,
+        (): void => {
+          this.fetchData();
+        }
+      );
     }
   }
 

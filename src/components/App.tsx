@@ -54,16 +54,20 @@ export default class App extends React.Component<{}, IState> {
       fetch(url.toString(), {
         mode: 'cors'
       })
-        .then((response: any) => {
-          return response.json();
-        })
-        .then((response: any) => {
-          this.setState({
-            isFeching: false,
-            data: response
-          });
-        })
-        .catch(() => this.setState({ isFeching: false, data: {} }));
+        .then(
+          (response: any): {} => {
+            return response.json();
+          }
+        )
+        .then(
+          (response: any): void => {
+            this.setState({
+              isFeching: false,
+              data: response
+            });
+          }
+        )
+        .catch((): void => this.setState({ isFeching: false, data: {} }));
     }
   }
 

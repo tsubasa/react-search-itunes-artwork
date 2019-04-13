@@ -82,17 +82,21 @@ export default class Result extends React.Component<IProps, IState> {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  private handleClick = (url: string) => () => {
+  private handleClick = (
+    url: string
+  ): ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined => (): void => {
     const { size, quality } = this.state;
     window.open(this.changeImageSize(url, size, quality), '_blank');
   };
 
-  private changeImageSize = (url: string, size: React.ReactText, quality: React.ReactText) =>
+  private changeImageSize = (url: string, size: React.ReactText, quality: React.ReactText): string =>
     url.replace(/^(https?.+\/source\/)(.+)(\.\w+)$/, `$1${size}x0w-${quality}$3`);
 
-  private handleChange = (name: 'size' | 'quality') => (e: React.ChangeEvent<HTMLSelectElement>) => {
+  private handleChange = (name: 'size' | 'quality'): ((event: React.ChangeEvent<HTMLSelectElement>) => void) => (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ): void => {
     if (Object.keys(this.state).includes(name)) {
-      this.setState({ [name]: e.target.value } as Pick<IState, keyof IState>);
+      this.setState({ [name]: event.target.value } as Pick<IState, keyof IState>);
     }
   };
 
@@ -109,17 +113,19 @@ export default class Result extends React.Component<IProps, IState> {
             <React.Fragment>
               {'results' in data &&
                 data.results &&
-                data.results.map((item: any, index: number) => {
-                  const { collectionName, artworkUrl100 } = item;
-                  return (
-                    <Item key={index} onClick={this.handleClick(artworkUrl100)}>
-                      <img src={this.changeImageSize(artworkUrl100, thumbImageSize, 80)} alt={collectionName} />
-                      <ItemTitle>
-                        <ItemTitleText>{collectionName}</ItemTitleText>
-                      </ItemTitle>
-                    </Item>
-                  );
-                })}
+                data.results.map(
+                  (item: any, index: number): JSX.Element => {
+                    const { collectionName, artworkUrl100 } = item;
+                    return (
+                      <Item key={index} onClick={this.handleClick(artworkUrl100)}>
+                        <img src={this.changeImageSize(artworkUrl100, thumbImageSize, 80)} alt={collectionName} />
+                        <ItemTitle>
+                          <ItemTitleText>{collectionName}</ItemTitleText>
+                        </ItemTitle>
+                      </Item>
+                    );
+                  }
+                )}
             </React.Fragment>
           )}
         </ItemWrapper>
